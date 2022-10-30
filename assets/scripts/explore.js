@@ -1,5 +1,4 @@
 // explore.js
-
 window.addEventListener('DOMContentLoaded', init);
 const texts = document.getElementById("text-to-speak");
 const soundPlay = document.querySelector("button");
@@ -13,8 +12,7 @@ function text2speech(event) {
 }
 
 function populateVoiceList() {
-
-  const voices = speechSynthesis.getVoices();
+  const voices = synthesis.getVoices();
   synthesis.onvoiceschanged = () => { 
     for (let i = 0; i < voices.length; i++) {
       const option = document.createElement('option');
