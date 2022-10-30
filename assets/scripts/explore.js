@@ -36,5 +36,8 @@ function populateVoiceList() {
 function init() {
   texts.addEventListener('change', text2speech());
   populateVoiceList();
+  if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = populateVoiceList;
+  }
   voiceSelect.addEventListener('change', populateVoiceList());
 }
