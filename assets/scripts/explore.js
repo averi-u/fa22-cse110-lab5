@@ -16,10 +16,13 @@ function populateVoiceList() {
   if (typeof speechSynthesis === 'undefined') {
     return;
   }
-  const voices = synthesis.getVoices();
+  
   synthesis.onvoiceschanged = () => { 
+    const voices = synthesis.getVoices();
     for (let i = 0; i < voices.length; i++) {
       const option = document.createElement('option');
+
+      
       option.textContent = `${voices[i].name} (${voices[i].lang})`;
       
       if (voices[i].default) {
@@ -28,6 +31,7 @@ function populateVoiceList() {
 
       option.setAttribute('data-lang', voices[i].lang);
       option.setAttribute('data-name', voices[i].name);
+      
       option.value = voice[i].lang;
       option.innerHTML = voice[i].lang;
       voiceSelect.appendChild(option);
