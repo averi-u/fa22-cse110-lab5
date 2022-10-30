@@ -4,11 +4,19 @@ const texts = document.getElementById("text-to-speak");
 const soundPlay = document.querySelector("button");
 const voiceSelect = document.getElementById("voice-select");
 const synthesis = window.speechSynthesis;
+const img1 = document.querySelector("img");
 
 function text2speech(event) {
-  soundPlay.addEventListener('click', function() {
-    let textEntered = new SpeechSynthesisUtterance(texts.value);
+  soundPlay.addEventListener('click', async function() {
+    const textEntered = new SpeechSynthesisUtterance(texts.value);
+    textEntered.lang = document.getElementById("voice-select").value;
+    
+    img1.src = "assets/images/smiling-open.png";
     speechSynthesis.speak(textEntered);
+
+    textEntered.addEventListener("end", (event) => {
+      img1.src = "assets/images/smiling.png";
+    });
   });
 }
 
@@ -45,8 +53,9 @@ function populateVoiceList() {
 }
 
 function init() {
-  texts.addEventListener('change', text2speech());
   populateVoiceList();
+  texts.addEventListener('change', text2speech());
+  
 
   /*
   if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
