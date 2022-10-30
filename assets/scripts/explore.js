@@ -28,6 +28,8 @@ function populateVoiceList() {
 
       option.setAttribute('data-lang', voices[i].lang);
       option.setAttribute('data-name', voices[i].name);
+      option.value = voice[i].lang;
+      option.innerHTML = voice[i].lang;
       voiceSelect.appendChild(option);
     }
   }
