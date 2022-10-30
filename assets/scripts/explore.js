@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', init);
 const texts = document.getElementById("text-to-speak");
 const soundPlay = document.querySelector("button");
 const voiceSelect = document.getElementById("voice-select");
+const synthesis = window.speechSynthesis;
 
 function text2speech(event) {
   soundPlay.addEventListener('click', function() {
