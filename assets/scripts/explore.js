@@ -18,8 +18,9 @@ function populateVoiceList() {
   }
   
   synthesis.onvoiceschanged = () => { 
+    const voices = synthesis.getVoices();
     setTimeout(() => {
-      const voices = synthesis.getVoices();
+      
       for (let i = 0; i < voices.length; i++) {
         const option = document.createElement('option');
   
