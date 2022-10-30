@@ -13,6 +13,9 @@ function text2speech(event) {
 }
 
 function populateVoiceList() {
+  if (typeof speechSynthesis === 'undefined') {
+    return;
+  }
   const voices = synthesis.getVoices();
   synthesis.onvoiceschanged = () => { 
     for (let i = 0; i < voices.length; i++) {
